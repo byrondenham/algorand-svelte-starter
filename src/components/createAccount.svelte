@@ -1,5 +1,5 @@
 <script>
-  import { algosdk } from "../store.js";
+  import { algosdk } from "../utils.js";
   export let accounts;
 
   let result;

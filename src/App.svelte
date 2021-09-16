@@ -1,6 +1,7 @@
 <script>
-  import { account } from "./store.js";
+  import { account } from "./utils.js";
   import CreateAccount from "./components/createAccount.svelte";
+  import NodeStatus from "./components/nodeStatus.svelte";
   import Balance from "./components/balance.svelte";
 
   let accounts = [];
@@ -9,7 +10,17 @@
 <main>
   <h1>Hello</h1>
   <br />
+  <hr />
+  <br />
   <CreateAccount bind:accounts />
+  <br />
+  <hr />
+  <br />
+  <h3>Node Status:</h3>
+  <NodeStatus />
+  <br />
+  <hr />
+  <br />
 
   {#each accounts as ac, index (ac.addr)}
     <b>{ac.addr}</b>

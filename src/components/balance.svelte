@@ -1,5 +1,5 @@
 <script>
-  import { account, algodClient, algosdk } from "../store.js";
+  import { account, algodClient, algosdk } from "../utils.js";
 
   $: balance = algodClient.accountInformation($account.addr).do();
 
