@@ -12,7 +12,7 @@
   Fetching ...
 {:then response}
   Node status:
-  <code>{response}</code>
+  <code>{JSON.stringify(response)}</code>
 {:catch error}
   {error}
 {/await}
