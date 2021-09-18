@@ -29,3 +29,7 @@
 {#if result}
   {@html result}
 {/if}
+
+<br />
+<hr />
+<br />

@@ -9,6 +9,10 @@ const token = { "X-API-Key": "ej3JZKiQax5w0b7ZT0mIe205ICyf9lB23WPUEoLn" };
 const port = "";
 
 export const algodClient = new algosdk.Algodv2(token, server, port);
-export const indexerClient = new algosdk.Indexer(token, indexer, port);
+export const indexerClient = new algosdk.Indexer(
+  { "X-API-Key": "ej3JZKiQax5w0b7ZT0mIe205ICyf9lB23WPUEoLn" },
+  indexer,
+  port
+);
 
 export const account = writable();

@@ -27,7 +27,8 @@ npm run dev
 ### Components Included:
 
 - [x] Creating a new account
-- [ ] Displaying the user's balance
+- [x] Showing node status
+- [x] Displaying the user's balance
 - [ ] Asset overview
 - [ ] Listing transaction history
 - [ ] Creating payment transaction and signing it

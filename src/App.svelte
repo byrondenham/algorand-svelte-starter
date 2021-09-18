@@ -3,25 +3,21 @@
   import CreateAccount from "./components/createAccount.svelte";
   import NodeStatus from "./components/nodeStatus.svelte";
   import Balance from "./components/balance.svelte";
+  import Assets from "./components/assets.svelte";
 
   let accounts = [];
 </script>
 
 <main>
   <h1>Hello</h1>
-  <br />
-  <hr />
-  <br />
   <CreateAccount bind:accounts />
-  <br />
-  <hr />
-  <br />
   <h3>Node Status:</h3>
   <NodeStatus />
-  <br />
-  <hr />
-  <br />
-
+  {#if accounts.length > 0}
+    <h3>Select account:</h3>
+  {:else}
+    <h3>No accounts found.</h3>
+  {/if}
   {#each accounts as ac, index (ac.addr)}
     <b>{ac.addr}</b>
     <button
@@ -32,18 +28,26 @@
     >
     <button
       on:click={() => {
+        if ($account === ac) $account = null;
         accounts.splice(index, 1);
         accounts = accounts;
       }}>Remove</button
     >
+    <br />
   {/each}
-
+  <br />
+  <hr />
+  <br />
   {#if $account}
     <Balance />
+    <Assets />
   {:else}
     Please select an account
   {/if}
 </main>
 
 <style>
+  h3 {
+    margin: 0;
+  }
 </style>
