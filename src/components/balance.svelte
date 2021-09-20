@@ -8,11 +8,23 @@
   };
 </script>
 
-{#await balance}
-  Fetching ...
-{:then response}
-  Account balance: {algosdk.microalgosToAlgos(response.amount)} Algos
-{:catch error}
-  {error}
-{/await}
-<button on:click={reload}>Reload</button>
+<div class="balance">
+  Account balance:
+  {#await balance}
+    Fetching ...
+  {:then response}
+    {algosdk.microalgosToAlgos(response.amount)} Algos
+  {:catch error}
+    {error}
+  {/await}
+
+  <button on:click={reload}>Reload</button>
+</div>
+
+<style>
+  .balance {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid #8c8c8c;
+  }
+</style>

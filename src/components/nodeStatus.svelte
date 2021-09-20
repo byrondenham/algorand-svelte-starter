@@ -9,6 +9,7 @@
 </script>
 
 <div class="node-status">
+  <h3>Node Status:</h3>
   {#await status}
     Fetching ...
   {:then response}
@@ -24,15 +25,19 @@
   {/await}
   <button class="reload node-status-reload" on:click={reload}>Reload</button>
 </div>
-<br />
-<hr />
-<br />
 
 <style>
   .node-status {
     padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid #8c8c8c;
   }
+
   .node-status-response {
-    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .node-status-reload {
+    margin-top: 0.5rem;
   }
 </style>

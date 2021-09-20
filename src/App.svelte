@@ -1,53 +1,39 @@
 <script>
   import { account } from "./utils.js";
-  import CreateAccount from "./components/createAccount.svelte";
   import NodeStatus from "./components/nodeStatus.svelte";
+  import RecoverAccount from "./components/accounts/recoverAccount.svelte";
+  import CreateAccount from "./components/accounts/createAccount.svelte";
+  import Accounts from "./components/accounts.svelte";
   import Balance from "./components/balance.svelte";
   import Assets from "./components/assets.svelte";
+  import Transactions from "./components/transactions.svelte";
+  import CreateTransaction from "./components/transactions/createTransaction.svelte";
 
   let accounts = [];
 </script>
 
 <main>
-  <h1>Hello</h1>
-  <CreateAccount bind:accounts />
-  <h3>Node Status:</h3>
   <NodeStatus />
-  {#if accounts.length > 0}
-    <h3>Select account:</h3>
-  {:else}
-    <h3>No accounts found.</h3>
-  {/if}
-  {#each accounts as ac, index (ac.addr)}
-    <b>{ac.addr}</b>
-    <button
-      disabled={$account === ac}
-      on:click={() => {
-        $account = ac;
-      }}>Use</button
-    >
-    <button
-      on:click={() => {
-        if ($account === ac) $account = null;
-        accounts.splice(index, 1);
-        accounts = accounts;
-      }}>Remove</button
-    >
-    <br />
-  {/each}
-  <br />
-  <hr />
-  <br />
-  {#if $account}
-    <Balance />
-    <Assets />
-  {:else}
-    Please select an account
-  {/if}
+  <RecoverAccount bind:accounts />
+  <CreateAccount bind:accounts />
+
+  <div class="select-account">
+    <Accounts bind:accounts />
+    {#if $account}
+      <Balance />
+      <Assets />
+      <Transactions />
+      <CreateTransaction />
+    {:else}
+      Please select an account
+    {/if}
+  </div>
 </main>
 
 <style>
-  h3 {
-    margin: 0;
+  .select-account {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid #8c8c8c;
   }
 </style>

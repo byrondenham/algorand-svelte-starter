@@ -1,5 +1,5 @@
 <script>
-  import { algosdk } from "../utils.js";
+  import { algosdk } from "../../utils.js";
   export let accounts;
 
   let result;
@@ -24,12 +24,19 @@
   };
 </script>
 
-<button on:click={createAccount}>Create Account</button>
+<div class="create-account">
+  <h3>Create Account</h3>
+  <button on:click={createAccount}>Create Account</button>
 
-{#if result}
-  {@html result}
-{/if}
+  {#if result}
+    {@html result}
+  {/if}
+</div>
 
-<br />
-<hr />
-<br />
+<style>
+  .create-account {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid #8c8c8c;
+  }
+</style>

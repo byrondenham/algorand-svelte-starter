@@ -21,4 +21,10 @@
   <button on:click={reload}>Reload</button>
 </div>
 
-<style></style>
+<style>
+  .assets {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid #8c8c8c;
+  }
+</style>
